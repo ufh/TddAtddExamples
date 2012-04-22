@@ -1,6 +1,5 @@
 package com.qagile.tddatdd.config;
 
-import com.sun.deploy.util.LoggerTraceListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
