@@ -1,0 +1,9 @@
+!img-r http://files/images/Q-Agile.png !1 Welcome to the [[FitNesse][FitNesse.FitNesse]] Pages of Q-Agile!
+   These are our actual *projects*:
+   !contents
+
+| '''To Learn More...'''|
+... about FitNesse have a look at the great Website with it's tons of cool examples from awesome guys: http://www.fitnesse.org
+For daily work, you might like the Wiki Syntax Help: http://fitnesse.org/FitNesse.UserGuide.QuickReferenceGuide
+
+!note Release v20111026
