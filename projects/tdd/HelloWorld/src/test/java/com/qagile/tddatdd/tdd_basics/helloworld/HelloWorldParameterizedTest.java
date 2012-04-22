@@ -30,7 +30,7 @@ public class HelloWorldParameterizedTest {
     public void testValidGreetingStrings(){
 
         Greeting02 greets = new Greeting02();
-        assertEquals("Test with param:" + whoToGreet, "Hello" + whoToGreet, greets.greet(whoToGreet));
+        assertEquals("Test with param:" + whoToGreet, "Hello " + whoToGreet, greets.greet(whoToGreet));
     }
 
 

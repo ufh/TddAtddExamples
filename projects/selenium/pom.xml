@@ -8,13 +8,14 @@
     <artifactId>selenium</artifactId>
     <version>1.0</version>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.1</version>
-        </dependency>
+    <parent>
+        <artifactId>ExamplesParent</artifactId>
+        <groupId>com.qagile.tddatdd</groupId>
+        <version>1.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
+    <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
