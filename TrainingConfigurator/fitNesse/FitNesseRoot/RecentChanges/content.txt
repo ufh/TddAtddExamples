@@ -1,0 +1,15 @@
+|FrontPage.TrainingConfigurator.ProductBacklog.StoriesComing.Story001CreateAndSaveTraining.CreateSheetWithExpectedColums||21:29:06 So, Apr 22, 2012|
+|FrontPage.TrainingConfigurator.ProductBacklog.StoriesComing.Story001CreateAndSaveTraining||21:25:54 So, Apr 22, 2012|
+|FrontPage.TrainingConfigurator.ProductBacklog.StoriesComing.Story003EditTraining||21:26:31 Do, Mrz 08, 2012|
+|FrontPage.TrainingConfigurator.ProductBacklog.StoriesComing.Story002bReadTrainingWithContent||21:21:18 Do, Mrz 08, 2012|
+|FrontPage.TrainingConfigurator.ProductBacklog.StoriesComing.Story002aReadTraining||21:14:19 Do, Mrz 08, 2012|
+|FrontPage.TrainingConfigurator.ProductBacklog.StoriesComing.Story002ReadTraining||21:02:52 Do, Mrz 08, 2012|
+|FrontPage.TrainingConfigurator||20:55:48 Do, Mrz 08, 2012|
+|FrontPage||16:05:16 Do, Mrz 08, 2012|
+|FrontPage.TrainingConfigurator.ProductBacklog.StoriesComing||20:08:06 Di, Mrz 06, 2012|
+|FrontPage.TrainingConfigurator.ReleasePlan||20:01:23 Di, Mrz 06, 2012|
+|FrontPage.TrainingConfigurator.RoadMap||19:59:06 Di, Mrz 06, 2012|
+|FrontPage.TrainingConfigurator.StakeHolders||22:34:35 So, Mrz 04, 2012|
+|FrontPage.TrainingConfigurator.ProductBacklog||22:30:51 So, Mrz 04, 2012|
+|FrontPage.ReleasePlan||22:24:10 So, Mrz 04, 2012|
+|FrontPage.RoadMap||22:18:21 So, Mrz 04, 2012|
