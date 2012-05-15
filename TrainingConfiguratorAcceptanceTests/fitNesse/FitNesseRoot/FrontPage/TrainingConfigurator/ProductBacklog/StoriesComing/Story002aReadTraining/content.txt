@@ -1,0 +1,11 @@
+As a training provider I want to read the created training, so I can plan it.
+
+Acceptance Criteria:
+* An existing training can be read without errors
+* the structure can be read into a corrosponding data model
+
+Constraints:
+* the order of the coloums should be evaluated dynamicly by recognizing the titles
+
+Accaptence Tests:
+!contents

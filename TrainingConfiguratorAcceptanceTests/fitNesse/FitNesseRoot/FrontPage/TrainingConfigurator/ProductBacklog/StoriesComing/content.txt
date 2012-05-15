@@ -1,0 +1,7 @@
+!contents
+
+Story Numbers are used as Priority with 001 as the highest Priority...
+
+* 0.1: Create, Read and Write the training plan via API, so it can be sent to the Training Consumer.
+* 0.2: Read the customisation, check dependencies and calculate the duration off-line
+* 0.3: Enable the consumer to do customize, dependency checks and calculation of the duration (costs) on its own
