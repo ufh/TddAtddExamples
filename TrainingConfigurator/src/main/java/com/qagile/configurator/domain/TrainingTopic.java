@@ -17,4 +17,31 @@ public class TrainingTopic {
     public List<TrainingAction> getActions() {
         return actions;
     }
+
+    @Override
+    public boolean equals(Object object){
+
+        if ( object == null )
+            return false;
+
+        if ( object == this )
+            return true;
+
+        TrainingTopic topic2compare = (TrainingTopic) object;
+        if (!this.name.equals(topic2compare.name)){
+            return false;
+        }
+        if (!this.actions.equals(topic2compare.actions)){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+
+        int hash = name.hashCode();
+        hash += actions.hashCode();
+        return hash;
+    }
 }

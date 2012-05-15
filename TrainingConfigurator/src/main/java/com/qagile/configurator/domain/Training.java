@@ -125,4 +125,9 @@ public class Training {
         table.append("-------------------------------------\n");
         return table.toString();
     }
+
+    public TrainingModule getModuleById(String id) {
+
+        return modules.get(id);
+    }
 }
