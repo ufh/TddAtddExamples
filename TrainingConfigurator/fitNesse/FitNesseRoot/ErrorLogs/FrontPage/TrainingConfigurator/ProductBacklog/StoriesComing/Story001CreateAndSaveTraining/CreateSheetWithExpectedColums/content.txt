@@ -1,6 +1,0 @@
-!3 !-fit-!
-|'''Date: '''|!-9:29:10 PM (MESZ) on Sonntag, April 22, 2012-!|
-|'''Test Page: '''|.FrontPage.TrainingConfigurator.ProductBacklog.StoriesComing.Story001CreateAndSaveTraining.CreateSheetWithExpectedColums|
-|'''Command: '''|!-java -cp fitnesse.jar;defaultPath fit.FitServer N7G21N4J 81 3-!|
-|'''Exit code: '''|!-1-!|
-|'''Time elapsed: '''|!-0.179 seconds-!|

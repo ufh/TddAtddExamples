@@ -1,2 +1,0 @@
-In the beginning we have just the two stakeholders:
-!contents -R2 -g -p -f -h

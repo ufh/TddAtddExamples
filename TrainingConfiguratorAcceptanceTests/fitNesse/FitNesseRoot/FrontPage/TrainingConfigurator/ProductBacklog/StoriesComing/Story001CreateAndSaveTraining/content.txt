@@ -1,0 +1,16 @@
+As a training provider I want to create a new training, so I can design it with modules and topis with their depth and the durations.
+
+Acceptance Criteria:
+* the training contains places for modules, topics and the depth they will be taught
+* also the duration should be linked to the topics
+* there's a possibility to put comments in
+* there's a hint, which target group is targeted
+* the created training has a version of the format
+
+Constraints:
+* only the structure is generated - no content is expected
+* a simple excel with the columns module, topic, depth, target group and duration will be enough for now
+* titles of the coloums of the file are filled in the first line.
+* in a map "version" the version number of the format can be found in cell 1/1
+
+Accaptence Tests !contents
