@@ -1,0 +1,6 @@
+<endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+    <endpoint name="BuecherService"
+
+              implementation="com.qagile.bookstore.ws.BuecherServiceImpl"
+              url-pattern="/ws/BuecherService" />
+</endpoints>
