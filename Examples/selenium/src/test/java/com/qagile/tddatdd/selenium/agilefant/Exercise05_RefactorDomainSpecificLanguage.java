@@ -47,7 +47,7 @@ public class Exercise05_RefactorDomainSpecificLanguage {
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
-        Object[][] data = new Object[][] { { DriverTypes.CHROME }};// , { DriverTypes.FIREFOX } };
+        Object[][] data = new Object[][] { { DriverTypes.FIREFOX }};// , { DriverTypes.FIREFOX } };
         return Arrays.asList(data);
     }
 
@@ -69,6 +69,7 @@ public class Exercise05_RefactorDomainSpecificLanguage {
         story.description = "Super urgent story!!!!";
 
         SeleniumProperties.browser = browser;
+        logger.info("Browser " + browser.toString());
         dsl.setUp();
 
         dsl.authenticate(SeleniumProperties.adminName, SeleniumProperties.adminPwd);

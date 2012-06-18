@@ -21,6 +21,6 @@ public class SeleniumProperties {
     
     //Browser for the tests, default is FireFox
     public static DriverTypes browser = DriverTypes.FIREFOX;
-    public static String pathToChromeDriver = "C:\\Users\\ful\\FUL_privat\\TDDExamples\\projects\\selenium\\lib\\chromedriver_win_19.0.1068.0\\chromedriver.exe";
+    public static String pathToChromeDriver = "C:\\Users\\ful\\FUL_privat\\TddAtddExamples\\Examples\\selenium\\lib\\chromedriver.exe";
 
 }

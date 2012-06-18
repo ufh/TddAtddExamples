@@ -19,7 +19,8 @@ import static org.testng.Assert.assertEquals;
  * so simulating a client.
  * These tests assume that the service is running.
  * In the root directory of the service call
- * mvn jetty:start
+ * mvn jetty:run-war
+ * TODO: works in IntelliJ but not from console. Make it work!!
  */
 public class BookstoreTests {
 
