@@ -3,14 +3,9 @@ package com.qagile.bookstore.qatest;
 import com.qagile.bookstore.ws.BuchDO;
 import com.qagile.bookstore.ws.BuecherService;
 import com.qagile.bookstore.ws.BuecherTO;
-import com.qagile.tddatdd.agilefant.domain.Dsl;
 import com.qagile.tddatdd.agilefant.domain.Product;
-import com.qagile.tddatdd.agilefant.domain.SeleniumDsl;
 import com.qagile.tddatdd.agilefant.domain.Story;
-import com.qagile.tddatdd.agilefant.selenium.pages.GeneralPage;
-import com.qagile.tddatdd.agilefant.selenium.pages.LoginPage;
-import com.qagile.tddatdd.agilefant.selenium.pages.NewProductPage;
-import com.qagile.tddatdd.agilefant.selenium.pages.StartPage;
+import com.qagile.tddatdd.agilefant.selenium.pages.*;
 import com.qagile.tddatdd.config.DriverTypes;
 import com.qagile.tddatdd.config.SeleniumProperties;
 import com.qagile.tddatdd.config.UnsupportedDriverException;
@@ -43,9 +38,11 @@ public class MixedTest {
     private String namespaceUri = "http://ws.bookstore.qagile.com/";
     private String localPart = "BuecherServiceImplService";
 
+    int numOfBooks = 3;
+
     // Selenium params
     Product product = new Product();
-    private DriverTypes browser = DriverTypes.FIREFOX;
+    private DriverTypes browser = DriverTypes.CHROME;
     private StartPage startPage;
 
     private Logger logger = Logger.getLogger("com.qagile.bookstore.qatest");
@@ -61,11 +58,11 @@ public class MixedTest {
         buecherService = webService.getPort( BuecherService.class );
 
         // creating some books in the store
-        createTestBooks(3);
+        createTestBooks(numOfBooks);
 
         // enabling Selenium Gui driver service
         // and login
-        product.title = "Missing Books Project";
+        product.title = "Books Project A (Chrome)";
         product.description = "Contains a story for every missing book...";
 
         SeleniumProperties.browser = browser;
@@ -78,13 +75,14 @@ public class MixedTest {
     }
 
     @Test
-    public void createStoryForEachBooks() throws UnsupportedDriverException {
+    public void createStoryForEachBooks() throws UnsupportedDriverException, InterruptedException {
 
-        List<BuchDO> buecherListe = readBooks();
+        List<BuchDO> buecherList = readBooks();
+        assertTrue(numOfBooks == buecherList.size());
 
-        createProjectForMissingBooks();
+        createProductForMissingBooks();
 
-        for (BuchDO buch : buecherListe){
+        for (BuchDO buch : buecherList){
             createStory(buch);
         }
 
@@ -100,25 +98,32 @@ public class MixedTest {
         GeneralPage.stop();
     }
 
-    private void createProjectForMissingBooks() throws UnsupportedDriverException {
+    private void createProductForMissingBooks() throws UnsupportedDriverException {
         //////////////////////////////////////////////////////////////////////////////////////
         //now we are logged in, let's open a new product
         //click createNewProduct
         NewProductPage newProductPage = startPage.navigateToNewProduct();
 
         //enter name and description
-        newProductPage.compileFormular("Mixed Test Project", "Add a story for every missing book ftom Bookstore webservice.");
+        newProductPage.compileFormular(product);
 
         //submit
         newProductPage.submit();
     }
 
-    private void createStory(BuchDO buch) {
+    private void createStory(BuchDO buch) throws UnsupportedDriverException, InterruptedException {
+
         Story story = new Story();
         story.backlog = product;
         story.title = "Title: " + buch.getTitel();
         story.estimation = "10";
         story.description = "Isbn: " + buch.getIsbn() + "/ Preis: " + buch.getPreis();
+
+        logger.info("Creating Story: " + story.title);
+
+        NewStoryPage newStoryPage = startPage.navigateToNewStory();
+        newStoryPage.compileFormular(story);
+        newStoryPage.submit();
     }
 
     private List<BuchDO> readBooks() {
@@ -132,7 +137,7 @@ public class MixedTest {
 
     private void createTestBooks(int count) throws Exception {
 
-        Long startIsbn = new Long(1000);
+        Long startIsbn = new Long(300);
         for (int i=0; i<count; i++ ){
             BuchDO newBook = new BuchDO();
             newBook.setIsbn(startIsbn + i);

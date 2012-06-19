@@ -31,7 +31,7 @@ public class SeleniumDsl implements Dsl {
     }
 
     @Override
-    public void createNewStory(Story story) throws UnsupportedDriverException {
+    public void createNewStory(Story story) throws UnsupportedDriverException, InterruptedException {
         //////////////////////////////////////////////////////////////////////////////////////
         NewStoryPage newStoryPage = startPage.navigateToNewStory();
 

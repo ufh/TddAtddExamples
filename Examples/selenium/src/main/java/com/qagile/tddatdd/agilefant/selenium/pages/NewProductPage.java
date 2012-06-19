@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: ful
@@ -30,8 +32,13 @@ public class NewProductPage {
     }
 
     public StartPage submit() throws UnsupportedDriverException {
-        WebElement dialogWindow = driver.findElement(By.cssSelector("div.ui-dialog div.ui-dialog-content form"));
-        dialogWindow.submit();
+
+        List<WebElement> buttons = driver.findElements(By.cssSelector("div.ui-dialog div.ui-dialog-buttonpane button.ui-button"));
+        if (buttons.get(0).getText().equals("Ok")){
+            buttons.get(0).click();
+        }else{
+            buttons.get(1).click();
+        }
         
         return new StartPage();
     }

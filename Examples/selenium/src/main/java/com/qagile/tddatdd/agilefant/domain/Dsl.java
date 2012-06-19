@@ -13,7 +13,7 @@ public interface Dsl {
 
     public void setUp() throws UnsupportedDriverException;
     public void authenticate(String user, String pwd) throws UnsupportedDriverException;
-    public void createNewStory(Story story) throws UnsupportedDriverException;
+    public void createNewStory(Story story) throws UnsupportedDriverException, InterruptedException;
     public void createNewProduct(Product product) throws UnsupportedDriverException;
 
 }

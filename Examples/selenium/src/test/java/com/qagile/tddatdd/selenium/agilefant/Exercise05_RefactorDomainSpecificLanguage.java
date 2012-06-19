@@ -83,7 +83,7 @@ public class Exercise05_RefactorDomainSpecificLanguage {
     }
 
     @Test
-    public void testCreateStory() throws UnsupportedDriverException {
+    public void testCreateStory() throws UnsupportedDriverException, InterruptedException {
 
         dsl.createNewStory(story);
 

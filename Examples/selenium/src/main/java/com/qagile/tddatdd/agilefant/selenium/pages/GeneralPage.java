@@ -6,6 +6,8 @@ import com.qagile.tddatdd.config.SeleniumProperties;
 import com.qagile.tddatdd.config.UnsupportedDriverException;
 import org.openqa.selenium.WebDriver;
 
+import java.util.logging.Logger;
+
 /**
  * Created by IntelliJ IDEA.
  * User: ful
@@ -16,6 +18,8 @@ import org.openqa.selenium.WebDriver;
 public class GeneralPage {
     
     protected static WebDriver driver;
+
+    protected Logger logger = Logger.getLogger("com.qagile.tddatdd.agilefant.selenium.pages");
 
     protected GeneralPage() throws UnsupportedDriverException {
         if (driver == null){
