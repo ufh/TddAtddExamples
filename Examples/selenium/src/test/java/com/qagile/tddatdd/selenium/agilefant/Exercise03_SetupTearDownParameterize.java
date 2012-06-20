@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -50,7 +52,7 @@ public class Exercise03_SetupTearDownParameterize {
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
-        Object[][] data = new Object[][] { { FIREFOX },{ CHROME } };
+        Object[][] data = new Object[][] {{ FIREFOX }, { CHROME }};
         return Arrays.asList(data);
     }
 
@@ -99,10 +101,6 @@ public class Exercise03_SetupTearDownParameterize {
     public void testCreateProduct(){
 
 
-        //////////////////////////////////////////////////////////////////////////////////////
-        //now we are logged in, let's open a new product
-        //click createNew
-        //WebElement linkNew = driver.findElement(By.cssSelector("a[id='createNewMenuLink']"));
         WebElement linkNew = driver.findElement(By.id("createNewMenuLink"));
         linkNew.click();
 
@@ -113,17 +111,17 @@ public class Exercise03_SetupTearDownParameterize {
 
         //enter name and description
         WebElement newProductTitle = driver.findElement(By.cssSelector("input[type=text].dynamics-editor-element"));
-        newProductTitle.sendKeys("Selenium created Product #01");
+        newProductTitle.sendKeys("Selenium created Product #02 (Exercise 3)" + browser.toString());
         WebElement newProductDescription = driver.findElement(By.cssSelector("div.wysiwyg iframe#IFrame.dynamics-editor-element"));
-        newProductDescription.sendKeys("Product #01 is the coolest product ever!");
+        newProductDescription.sendKeys("Product #02 is the coolest product ever!");
 
         //submit
-        //WebElement btnOk = driver.findElement(By.linkText("Ok"));
-        WebElement dialogWindow = driver.findElement(By.cssSelector("div.ui-dialog div.ui-dialog-content form"));
-        dialogWindow.submit();
-
-        //open product
-
+        List<WebElement> buttons = driver.findElements(By.cssSelector("div.ui-dialog div.ui-dialog-buttonpane button.ui-button"));
+        if (buttons.get(0).getText().equals("Ok")){
+            buttons.get(0).click();
+        }else{
+            buttons.get(1).click();
+        }
 
 
     }
@@ -134,8 +132,6 @@ public class Exercise03_SetupTearDownParameterize {
 
         //////////////////////////////////////////////////////////////////////////////////////
         //now we are logged in, let's open a new product
-        //click createNew
-        //WebElement linkNew = driver.findElement(By.cssSelector("a[id='createNewMenuLink']"));
         WebElement linkNew = driver.findElement(By.id("createNewMenuLink"));
         linkNew.click();
 
@@ -146,22 +142,30 @@ public class Exercise03_SetupTearDownParameterize {
 
         //enter mandatory data for the story
         // id s are generated - there is no chance to identify the elements!
+        WebElement editDescription = driver.findElement(By.cssSelector("div.wysiwyg iframe#IFrame.dynamics-editor-element"));
         List<WebElement> list = driver.findElements(By.cssSelector("input.dynamics-editor-element"));
         WebElement editName = list.get(0);
-        WebElement editBacklog = list.get(1);
         WebElement editStoryPoints = list.get(2);
-        WebElement editDescription = driver.findElement(By.cssSelector("div.wysiwyg iframe#IFrame.dynamics-editor-element"));
-
-        editName.sendKeys("Name of the Story");
-        editBacklog.sendKeys("ProductTest01");
+        // set fields
+        editName.sendKeys("Story Exercise #3");
         editStoryPoints.sendKeys("13");
         editDescription.sendKeys("Super urgent story!!!!");
+        // due to auto completion backlog filed needs special treatment..
+        WebElement editBacklog = driver.findElement(By.cssSelector("input.dynamics-editor-element.ui-autocomplete-input"));
+        editBacklog.click();
+        editBacklog.sendKeys("Selenium created Product #02 (Exercise 3)" + browser.toString());
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        logger.info("Waiting for autocomplete suggestions");
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("html body ul.ui-autocomplete li.ui-menu-item a.ui-corner-all")));
+        element.click();
 
-        //submit
-        //WebElement btnOk = driver.findElement(By.linkText("Ok"));
-        WebElement dialogWindow = driver.findElement(By.cssSelector("div.ui-dialog div.ui-dialog-content form"));
-        dialogWindow.submit();
-
+        //submit by clicking ok
+        List<WebElement> buttons = driver.findElements(By.cssSelector("div.ui-dialog div.ui-dialog-buttonpane button.ui-button"));
+        if (buttons.get(0).getText().equals("Ok")){
+            buttons.get(0).click();
+        }else{
+            buttons.get(1).click();
+        };
     }
 
     @After
@@ -175,7 +179,6 @@ public class Exercise03_SetupTearDownParameterize {
         logger.info("Title is " + driver.getTitle());
 
         driver.close();
-        driver.quit();
 
     }
 }

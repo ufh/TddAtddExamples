@@ -40,7 +40,7 @@ public class Exercise04_RefactorPageObjects {
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
-        Object[][] data = new Object[][] { { DriverTypes.FIREFOX }};// , { DriverTypes.FIREFOX } };
+        Object[][] data = new Object[][] { { DriverTypes.CHROME }, { DriverTypes.FIREFOX } };
         return Arrays.asList(data);
     }
 
@@ -71,7 +71,7 @@ public class Exercise04_RefactorPageObjects {
         NewProductPage newProductPage = startPage.navigateToNewProduct();
 
         //enter name and description
-        newProductPage.compileFormular("Selenium created Product #01 (refactored)", "Product #01 is the coolest product ever!(refactored)");
+        newProductPage.compileFormular("Selenium created Product #03 (Exercise #4)" + browser, "Product #03 is the coolest product ever!(refactored)");
 
         //submit
         newProductPage.submit();
@@ -86,7 +86,7 @@ public class Exercise04_RefactorPageObjects {
 
         //enter mandatory data for the story
         // id s are generated - there is no chance to identify the elements!
-        newStoryPage.compileFormular("ProductTest01", "Name of the Story (refactored)", "13", "Super urgent story!!!!");
+        newStoryPage.compileFormular("Selenium created Product #03 (Exercise #4)" + browser, "Name of the Story (refactored)", "13", "Super urgent story!!!!");
 
         //submit
         newStoryPage.submit();
@@ -98,7 +98,7 @@ public class Exercise04_RefactorPageObjects {
         // at the end log out and close selenium drivers
         startPage.logout();
 
-        logger.info("Logged otu, now closing browser... ");
+        logger.info("Logged out, now closing browser... ");
 
         GeneralPage.stop();
     }

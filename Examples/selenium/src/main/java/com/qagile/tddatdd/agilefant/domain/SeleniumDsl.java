@@ -56,4 +56,9 @@ public class SeleniumDsl implements Dsl {
         //submit
         newProductPage.submit();        
     }
+
+    @Override
+    public void logout() {
+        startPage.logout();
+    }
 }

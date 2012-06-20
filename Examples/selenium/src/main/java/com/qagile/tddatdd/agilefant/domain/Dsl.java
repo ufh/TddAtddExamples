@@ -15,5 +15,5 @@ public interface Dsl {
     public void authenticate(String user, String pwd) throws UnsupportedDriverException;
     public void createNewStory(Story story) throws UnsupportedDriverException, InterruptedException;
     public void createNewProduct(Product product) throws UnsupportedDriverException;
-
+    public void logout();
 }

@@ -28,20 +28,26 @@ public class NewStoryPage extends GeneralPage {
     ////////////////////////////////////////////////////
     // TODO merge with compileFormular(Story)
     // This version doesn't work !!!
-    public void compileFormular(String backlog, String title, String estimation, String description) {
+    public void compileFormular(String backlogTitle, String title, String estimation, String description) {
 
-        //enter mandatory data for the story
-        // id s are generated - there is no chance to identify the elements!
+        WebElement editDescription = driver.findElement(By.cssSelector("div.wysiwyg iframe#IFrame.dynamics-editor-element"));
         List<WebElement> list = driver.findElements(By.cssSelector("input.dynamics-editor-element"));
         WebElement editName = list.get(0);
-        WebElement editBacklog = list.get(1);
         WebElement editStoryPoints = list.get(2);
-        WebElement editDescription = driver.findElement(By.cssSelector("div.wysiwyg iframe#IFrame.dynamics-editor-element"));
-
         editName.sendKeys(title);
-        editBacklog.sendKeys(backlog);
         editStoryPoints.sendKeys(estimation);
         editDescription.sendKeys(description);
+
+        WebElement editBacklog = driver.findElement(By.cssSelector("input.dynamics-editor-element.ui-autocomplete-input"));
+        editBacklog.click();
+        editBacklog.sendKeys(backlogTitle);
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        logger.info("Waiting for autocomplete suggestions");
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("html body ul.ui-autocomplete li.ui-menu-item a.ui-corner-all")));
+
+        logger.info("Element found: " + (element != null));
+        element.click();
     }
 
     public StartPage submit() throws UnsupportedDriverException {
@@ -71,13 +77,10 @@ public class NewStoryPage extends GeneralPage {
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         logger.info("Waiting for autocomplete suggestions");
-        //WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li.ui-menu-item")));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("html body ul.ui-autocomplete li.ui-menu-item a.ui-corner-all")));
 
         logger.info("Element found: " + (element != null));
         element.click();
-//        logger.info("Element clicked...");
-//        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("li.ui-menu-item")));
 
     }
 }

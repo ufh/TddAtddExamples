@@ -59,6 +59,11 @@ public class StartPage extends GeneralPage {
         return new NewStoryPage();
     }
 
+    public ProductPage navigateToProduct(String productTitle, int i) throws UnsupportedDriverException {
+
+        return leftNavBar.menuProducts.openProductPage(productTitle, i);
+    }
+
     public void logout() {
         linkLogout = driver.findElement(LINK_LOGOUT);
         linkLogout.click();

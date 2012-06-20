@@ -86,6 +86,12 @@ public class MixedTest {
             createStory(buch);
         }
 
+        // and check existence in the product
+        ProductPage productPage = startPage.navigateToProduct(product.title, 0);
+        for (BuchDO buch : buecherList){
+            productPage.storyIsShown(buch.getTitel());
+        }
+
     }
 
     @AfterClass

@@ -15,8 +15,8 @@ public class LeftNavBar {
     private WebElement root;
     private static By ROOT;
 
-    private MenuMyAssignments menuMyAssignments;
-    private MenuProducts menuProducts;
-    private MenuAdmin menuAdmin;
+    public MenuMyAssignments menuMyAssignments;
+    public MenuProducts menuProducts;
+    public MenuAdmin menuAdmin;
 
 }

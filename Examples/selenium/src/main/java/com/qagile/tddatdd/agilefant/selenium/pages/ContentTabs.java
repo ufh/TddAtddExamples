@@ -8,4 +8,6 @@ package com.qagile.tddatdd.agilefant.selenium.pages;
  * To change this template use File | Settings | File Templates.
  */
 public class ContentTabs {
+
+
 }

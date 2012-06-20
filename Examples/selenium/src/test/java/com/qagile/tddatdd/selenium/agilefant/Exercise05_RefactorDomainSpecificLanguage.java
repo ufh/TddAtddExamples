@@ -18,6 +18,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.logging.Logger;
 
+import static junit.framework.Assert.assertNotNull;
+
 /**
  * Created by IntelliJ IDEA.
  * User: ful
@@ -31,8 +33,6 @@ public class Exercise05_RefactorDomainSpecificLanguage {
     private final static Logger logger = Logger.getLogger("com.qagile.tddatdd.selenium.agilefant");
 
     private DriverTypes browser;
-
-    private StartPage startPage;
     
     private Dsl dsl = new SeleniumDsl();
 
@@ -47,7 +47,7 @@ public class Exercise05_RefactorDomainSpecificLanguage {
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
-        Object[][] data = new Object[][] { { DriverTypes.FIREFOX }};// , { DriverTypes.FIREFOX } };
+        Object[][] data = new Object[][] { { DriverTypes.CHROME }};// , { DriverTypes.FIREFOX } };
         return Arrays.asList(data);
     }
 
@@ -58,13 +58,12 @@ public class Exercise05_RefactorDomainSpecificLanguage {
     public void start() throws UnsupportedDriverException {
 
         // setup product
-        product.title = "Selenium created Product #01 (refactored)";
-        product.description = "Product #01 is the coolest product ever!(refactored)";
+        product.title = "Selenium created Product #04 (Exercise 5)";
+        product.description = "Product #04 is the coolest product ever!(refactored)";
 
         // setup story
-        Story story = new Story();
         story.backlog = product;
-        story.title = "Name of the Story (refactored)";
+        story.title = "Name of the Story (Exercise 5)";
         story.estimation = "13";
         story.description = "Super urgent story!!!!";
 
@@ -85,6 +84,9 @@ public class Exercise05_RefactorDomainSpecificLanguage {
     @Test
     public void testCreateStory() throws UnsupportedDriverException, InterruptedException {
 
+        assertNotNull(story);
+        assertNotNull(story.backlog);
+        assertNotNull(story.backlog.title);
         dsl.createNewStory(story);
 
     }
@@ -93,7 +95,7 @@ public class Exercise05_RefactorDomainSpecificLanguage {
     public void cleanUp(){
         ///////////////////////////////////////////////////////////////////////////////////////
         // at the end log out and close selenium drivers
-        startPage.logout();
+        dsl.logout();
 
         logger.info("Logged out, now closing browser... ");
 
