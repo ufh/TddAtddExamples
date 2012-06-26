@@ -21,11 +21,8 @@ import java.util.logging.Logger;
 import static junit.framework.Assert.assertNotNull;
 
 /**
- * Created by IntelliJ IDEA.
  * User: ful
- * Date: 19.03.12
- * Time: 18:54
- * To change this template use File | Settings | File Templates.
+ * Challenge: Why are both stories added to the FIREFOX product? Think about Before and instantiations...
  */
 @RunWith(value = Parameterized.class)
 public class Exercise05_RefactorDomainSpecificLanguage {
@@ -47,7 +44,7 @@ public class Exercise05_RefactorDomainSpecificLanguage {
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
-        Object[][] data = new Object[][] { { DriverTypes.CHROME }};// , { DriverTypes.FIREFOX } };
+        Object[][] data = new Object[][] { { DriverTypes.CHROME }, { DriverTypes.FIREFOX } };
         return Arrays.asList(data);
     }
 
@@ -58,8 +55,8 @@ public class Exercise05_RefactorDomainSpecificLanguage {
     public void start() throws UnsupportedDriverException {
 
         // setup product
-        product.title = "Selenium created Product #04 (Exercise 5)";
-        product.description = "Product #04 is the coolest product ever!(refactored)";
+        product.title = "Selenium created Product #04 (Exercise 5)"  + browser.toString();
+        product.description = "Product #04 is the coolest product ever!";
 
         // setup story
         story.backlog = product;

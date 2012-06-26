@@ -41,7 +41,7 @@ public class MixedTest {
     int numOfBooks = 3;
 
     // Selenium params
-    Product product = new Product();
+    static private Product product;
     private DriverTypes browser = DriverTypes.CHROME;
     private StartPage startPage;
 
@@ -62,7 +62,8 @@ public class MixedTest {
 
         // enabling Selenium Gui driver service
         // and login
-        product.title = "Books Project A (Chrome)";
+        product = new Product();
+        product.title = "Books Project (" + browser + ")";
         product.description = "Contains a story for every missing book...";
 
         SeleniumProperties.browser = browser;
@@ -87,6 +88,7 @@ public class MixedTest {
         }
 
         // and check existence in the product
+        logger.info("Checking product: " + product.title);
         ProductPage productPage = startPage.navigateToProduct(product.title, 0);
         for (BuchDO buch : buecherList){
             productPage.storyIsShown(buch.getTitel());

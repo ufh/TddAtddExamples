@@ -51,7 +51,7 @@ public class MenuProducts extends GeneralPage {
     public ProductPage openProductPage(String productTitle, int i) throws UnsupportedDriverException {
 
         openMenu();
-        List<WebElement> linkProducts = btnProducts.findElements(By.linkText("productTitle"));
+        List<WebElement> linkProducts = btnProducts.findElements(By.linkText(productTitle));
         linkProducts.get(i).click();
         return new ProductPage();
     }

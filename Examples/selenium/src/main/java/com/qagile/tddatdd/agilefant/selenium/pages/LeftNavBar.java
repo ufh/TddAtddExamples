@@ -1,5 +1,6 @@
 package com.qagile.tddatdd.agilefant.selenium.pages;
 
+import com.qagile.tddatdd.config.UnsupportedDriverException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -10,13 +11,16 @@ import org.openqa.selenium.WebElement;
  * Time: 14:40
  * To change this template use File | Settings | File Templates.
  */
-public class LeftNavBar {
+public class LeftNavBar extends GeneralPage {
     
     private WebElement root;
     private static By ROOT;
 
     public MenuMyAssignments menuMyAssignments;
-    public MenuProducts menuProducts;
+    public MenuProducts menuProducts = new MenuProducts();
     public MenuAdmin menuAdmin;
 
+    protected LeftNavBar() throws UnsupportedDriverException {
+        super();
+    }
 }
